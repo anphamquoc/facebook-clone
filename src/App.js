@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AuthContextProvider from "./context/AuthContext";
+import Auth from "./views/Auth";
+import Facebook from "./views/Facebook";
+import Messenger from "./views/Messenger";
+import FriendContextProvider from "./context/messenger/FriendContext";
+import MessageContextProvider from "./context/messenger/MessageContext";
+import ProtectedRoute from "./components/routing/ProtectedRoute";
+import LoginRegister from "./components/auth/LoginRegister";
+import PostContextProvider from "./context/facebook/PostContext";
+require("dotenv").config();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+      <FriendContextProvider>
+        <Router>
+          <Switch>
+            <ProtectedRoute exact path="/" component={Facebook} />
+            <Route
+              exact
+              path="/login"
+              render={(props) => <Auth {...props} />}
+            ></Route>
+            <ProtectedRoute exact path="/dashboard" component={Facebook} />
+            <ProtectedRoute exact path="/messenger" component={Messenger} />
+          </Switch>
+        </Router>
+      </FriendContextProvider>
+    </AuthContextProvider>
   );
 }
 

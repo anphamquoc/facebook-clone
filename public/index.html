@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -29,15 +43,40 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <script>
+      $(document).ready(function () {
+        $("#input-area-text").emojioneArea({
+          pickerPosition: "left",
+          tonesStyle: "bullet",
+          inline: true,
+        });
+      });
+      changeStatus = (i) => {
+        var aboutpost = document.querySelectorAll(".about-post")[i];
+        var likebtn = document.querySelectorAll(".like-post-btn")[i];
+        var quantity = aboutpost.querySelector(".quantity");
+        var likeimg = likebtn.querySelector("img");
+        if (likeimg.src.includes("images/like.svg")) {
+          likeimg.src = likeimg.src.replace(
+            "images/like.svg",
+            "images/like-active.svg"
+          );
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+          likeimg.style.filter =
+            "invert(49%) sepia(89%) saturate(5073%) hue-rotate(204deg) brightness(90%) contrast(100%)";
+          likebtn.style.color = "rgb(22, 111, 229)";
+          quantity.innerHTML = parseInt(quantity.innerHTML) + 1;
+        } else {
+          likeimg.src = likeimg.src.replace(
+            "images/like-active.svg",
+            "images/like.svg"
+          );
+          likebtn.style.color = "white";
+          likeimg.style.filter =
+            "invert(96%) sepia(4%) saturate(17%) hue-rotate(160deg) brightness(104%) contrast(107%)";
+          quantity.innerHTML = parseInt(quantity.innerHTML) - 1;
+        }
+      };
+    </script>
   </body>
 </html>

@@ -1,38 +1,132 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body #root {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  max-width: 100vw;
+  background-color: rgb(240, 242, 245);
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+/* logo */
+.container .logo {
+  margin-bottom: 100px;
+  width: 40%;
+}
+
+.container .logo .logo-image {
+  width: 301px;
+  height: 105px;
+}
+
+.container .logo .logo-title {
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.container .login-box {
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  width: 30%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-group {
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* loginbox */
+
+.login-box input.input-area {
+  padding: 10px;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.login-box .submit-btn,
+.register-box .submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(22, 111, 229);
   color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.login-box .forgot-password {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.register-box .btn-create {
+  font-weight: bold;
+  background-color: rgb(54, 164, 32);
+  padding: 10px;
+  width: 70%;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* register-modal */
+
+.modal {
+  text-align: left;
+}
+
+.modal .modal-content {
+  color: black;
+}
+
+.modal .modal-content .modal-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal .modal-header .modal-title .close {
+  font-size: 30px;
+}
+
+.modal .modal-body .form-group:first-child {
+  display: flex;
+}
+
+.modal .modal-body input.name {
+  width: 50%;
+}
+
+.modal .modal-body input.name:first-child {
+  margin-right: 5px;
+}
+
+.modal .modal-body .sex-input input {
+  height: 15px;
+  width: 15px;
+}
+.modal .modal-body .sex-input input:last-child {
+  margin-left: 20px;
+}
+
+.modal .modal-body .privacy-title {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modal .submit-btn {
+  background-color: rgb(54, 164, 32);
 }
